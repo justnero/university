@@ -6,4 +6,4 @@ function demo()
     
     a = rand(m,n);
     b = mlogzn(am,aM,a,m,n);
-    freqplot(b,m,n);
+    freqplot(b,m,n,1);
