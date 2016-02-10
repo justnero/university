@@ -1,0 +1,5 @@
+JN5 1999 100 Moscow1 
+JN1 2000 100 Moscow5 
+JN4 2001 100 Moscow2 
+JN3 2002 100 Moscow3 
+JN2 2003 100 Moscow4 
