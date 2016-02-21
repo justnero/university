@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.justnero.study.sevsu.java.lab05.MainController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+   </rowConstraints>
+   <children>
+      <TableView fx:id="table" editable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
+        <columns>
+          <TableColumn fx:id="tableTitleC" prefWidth="75.0" text="Title" />
+          <TableColumn fx:id="tableAuthorC" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="tableTrackCountC" prefWidth="75.0" text="Track count" />
+            <TableColumn fx:id="tableDurationC" prefWidth="75.0" text="Duration" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="titleF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="authorF" layoutX="10.0" layoutY="220.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Label text="Title" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="Author" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <TextField fx:id="trackCountF" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <TextField fx:id="durationF" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <Label text="Track count" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Label text="Duration" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <Button fx:id="addB" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleAddAction" text="Add" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+      <Button fx:id="saveB" mnemonicParsing="false" onAction="#handleSaveAction" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Button fx:id="loadB" mnemonicParsing="false" onAction="#handleLoadAction" text="Load" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <StackedBarChart fx:id="chart" GridPane.columnIndex="5" GridPane.rowIndex="1">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </StackedBarChart>
+      <Button fx:id="deleteB" mnemonicParsing="false" onAction="#handleDeleteAction" text="Delete" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+   </children>
+</GridPane>
