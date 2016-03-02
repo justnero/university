@@ -1,0 +1,120 @@
+@startuml
+
+skinparam {
+
+    class {
+        BackgroundColor #f0f0f0
+        BorderColor #000000
+        FontSize 16
+        FontStyle bold
+        Style uml2
+        ArrowColor #cc7832
+        ArrowFontColor #A9B7C6
+        ArrowFontStyle bold
+        ArrowStyle italic
+        }
+
+    backgroundColor #3c3f41
+    titleFontColor #A9B7C6
+    titleFontSize 44
+    packageBackgroundColor #808080-#black
+    packageFontColor #cccccc
+
+    circledCharacterFontColor f0f0f0
+    circledCharacterFontSize 17
+    circledCharacterFontStyle bold
+    circledCharacterFontName  Courier
+    circledCharacterRadius 11
+
+    stereotypeCBackgroundColor #909090
+    stereotypeABackgroundColor #CC0000
+    stereotypeIBackgroundColor #0000bb
+
+    noteBackgroundColor #808080
+    noteBorderColor #black
+
+}
+
+class Item {
+    #int id
+    #Stirng name
+    #double price
+    #int quantity
+    +Item(int id, String name, double price, int quantity)
+    +int getId()
+    +String getName()
+    +double getPrice()
+    +int getQuantity()
+    +void setPrice(double price)
+    +void setQuantity(int quantity)
+}
+
+class Report {
+    #String name
+    +Report(Stirng name)
+    +Report addLine(String line)
+    +Report removeLine(int index)
+    +int getSize()
+    +void print()
+}
+
+class Stock {
+    #Map<Integer,Item> items
+    +Stock()
+    +getSize()
+    +Stock addItem(Item item)
+    +Item getItem(Integer id)
+    +Stock removeItem(Integer id)
+    +Item takeItem(Integer id, int quantity)
+    +Report createReport()
+}
+
+class Invoice {
+    #Map<Stirng,Item> items
+    +Invoice()
+    +Invoice addItem(Item item)
+    +Stock removeItem(Integer id)
+    +Stock removeItem(Integer id, int quantity)
+    +double getSum()
+}
+
+class Check {
+    ~Check(Invoice invoice)
+    +Check pay()
+    +Check takeItems()
+    +Check refund()
+    +Check returnItems()
+}
+
+class CashBox {
+    {static} -CashBox instance
+    -CashBox()
+    {static} +CashBox getInstance()
+    +Check createCheck(Invoice invoice)
+    +CashBox pay(Check check)
+    +CashBox refund(Check check)
+    -CashBox takeMoney(double money)
+    -CashBox giveMoney(double money)
+}
+
+class AdminPanel {
+    {static} -AdminPanel instance
+    -AdminPanel()
+    {static} +AdminPanel getInstance()
+    +AdminPanel orderItem(Item item)
+    +AdminPanel printReports()
+    -List<Report> collectReports()
+}
+
+
+Check --|> Invoice
+Item "1" -- "1..*" Stock : "Содержится >"
+Stock ..> Report
+AdminPanel ..> Stock
+AdminPanel ..> Report
+CashBox ..> Stock
+CashBox ..> Check
+Item "1" -- "1..*" Invoice : "Содержит >"
+
+
+@enduml
