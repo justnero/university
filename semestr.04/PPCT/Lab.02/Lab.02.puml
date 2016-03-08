@@ -1,7 +1,6 @@
 @startuml
 
 skinparam {
-
     class {
         BackgroundColor #f0f0f0
         BorderColor #000000
@@ -32,12 +31,11 @@ skinparam {
 
     noteBackgroundColor #808080
     noteBorderColor #black
-
 }
 
 class Item {
     #int id
-    #Stirng name
+    #String name
     #double price
     #int quantity
     +Item(int id, String name, double price, int quantity)
@@ -51,7 +49,8 @@ class Item {
 
 class Report {
     #String name
-    +Report(Stirng name)
+    #List<String> lines
+    +Report(String name)
     +Report addLine(String line)
     +Report removeLine(int index)
     +int getSize()
@@ -59,7 +58,7 @@ class Report {
 }
 
 class Stock {
-    #Map<Integer,Item> items
+    #Map<Integer, Item> items
     +Stock()
     +getSize()
     +Stock addItem(Item item)
@@ -70,7 +69,7 @@ class Stock {
 }
 
 class Invoice {
-    #Map<Stirng,Item> items
+    #Map<Integer, Item> items
     +Invoice()
     +Invoice addItem(Item item)
     +Stock removeItem(Integer id)
@@ -80,9 +79,9 @@ class Invoice {
 
 class Check {
     ~Check(Invoice invoice)
-    +Check pay()
+    ~Check pay()
+    ~Check refund()
     +Check takeItems()
-    +Check refund()
     +Check returnItems()
 }
 
@@ -91,8 +90,8 @@ class CashBox {
     -CashBox()
     {static} +CashBox getInstance()
     +Check createCheck(Invoice invoice)
-    +CashBox pay(Check check)
-    +CashBox refund(Check check)
+    +CashBox pay(Check Check)
+    +CashBox refund(Check Check)
     -CashBox takeMoney(double money)
     -CashBox giveMoney(double money)
 }
@@ -114,7 +113,7 @@ AdminPanel ..> Stock
 AdminPanel ..> Report
 CashBox ..> Stock
 CashBox ..> Check
-Item "1" -- "1..*" Invoice : "Содержит >"
+Item "1" -- "1..*" Invoice : "Содержится >"
 
 
 @enduml
