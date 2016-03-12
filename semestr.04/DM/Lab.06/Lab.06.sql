@@ -5,7 +5,7 @@
 CREATE VIEW employee_vacation(id, employee_id, a_date, start_date, days_count) AS
 SELECT a.id, a.employee_id, a.a_date, v.start_date, v.days_count
 FROM activity a, vacation v
-WHERE a.a_type = 'vacation';
+WHERE a.a_type = 'vacation' AND v.id = a.id;
 
 --- create view for premiums
 CREATE VIEW employee_premium(name, premium, vacation) AS
@@ -46,10 +46,10 @@ COMMIT;
 
 -- drop views
 --- drop vacations view
-DROP VIEW employee_vacation;
+--DROP VIEW employee_vacation;
 
 --- drop vacations view
-DROP VIEW employee_premium;
+--DROP VIEW employee_premium;
 
 --- drop editable view
 DROP VIEW employee_secret;
