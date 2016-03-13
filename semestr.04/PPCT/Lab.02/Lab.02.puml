@@ -77,21 +77,21 @@ class Invoice {
     +double getSum()
 }
 
-class Check {
-    ~Check(Invoice invoice)
-    ~Check pay()
-    ~Check refund()
-    +Check takeItems()
-    +Check returnItems()
+class Bill {
+    ~Bill(Invoice invoice)
+    ~Bill pay()
+    ~Bill refund()
+    +Bill takeItems()
+    +Bill returnItems()
 }
 
 class CashBox {
     {static} -CashBox instance
     -CashBox()
     {static} +CashBox getInstance()
-    +Check createCheck(Invoice invoice)
-    +CashBox pay(Check Check)
-    +CashBox refund(Check Check)
+    +Bill createBill(Invoice invoice)
+    +CashBox pay(Bill bill)
+    +CashBox refund(Bill bill)
     -CashBox takeMoney(double money)
     -CashBox giveMoney(double money)
 }
@@ -106,13 +106,13 @@ class AdminPanel {
 }
 
 
-Check --|> Invoice
+Bill --|> Invoice
 Item "1" -- "1..*" Stock : "Содержится >"
 Stock ..> Report
 AdminPanel ..> Stock
 AdminPanel ..> Report
 CashBox ..> Stock
-CashBox ..> Check
+CashBox ..> Bill
 Item "1" -- "1..*" Invoice : "Содержится >"
 
 
