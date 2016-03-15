@@ -1,0 +1,103 @@
+@startuml
+
+skinparam {
+    state {
+        BackgroundColor #f0f0f0
+        BorderColor #000000
+        FontSize 16
+        FontStyle bold
+        Style uml2
+        ArrowColor #cc7832
+        ArrowFontColor #A9B7C6
+        ArrowFontStyle bold
+        ArrowStyle italic
+    }
+
+    backgroundColor #3c3f41
+    titleFontColor #A9B7C6
+    titleFontSize 44
+    packageBackgroundColor #808080-#black
+    packageFontColor #cccccc
+
+    circledCharacterFontColor f0f0f0
+    circledCharacterFontSize 17
+    circledCharacterFontStyle bold
+    circledCharacterFontName  Courier
+    circledCharacterRadius 11
+
+    stereotypeCBackgroundColor #909090
+    stereotypeABackgroundColor #CC0000
+    stereotypeIBackgroundColor #0000bb
+
+    noteBackgroundColor #808080
+    noteBorderColor #black
+}
+
+state "Формирование корзины" as S1 {
+    state "Выбрать товар" as S1.1
+    S1.1 : Выбирается товар из
+    S1.1 : представленных в магазине
+
+    state "Добавить в корзину" as S1.2
+    S1.2 : Выбранный товар
+    S1.2 : добавляется в корзину
+
+    [*] -right-> S1.1
+    S1.1 -down-> S1.2 : Товар\n требуется
+    S1.2 -down-> S1.1 : Требуются\n ещё товары
+    S1.2 -right-> [*] : Больше\n товаров не\n требуется
+}
+
+state "Формирование накладной" as S2 {
+    state "Проверка наличия" as S2.1
+    S2.1 : Проверяется наличие
+    S2.1 : товара на складе
+
+    state "Удаление товара" as S2.2
+    S2.2 : Товар удаляется
+    S2.2 : из корзины
+
+    state "Добавление товара" as S2.3
+    S2.3 : Товар добавляется
+    S2.3 : в накладную
+
+    [*] -down-> S2.1
+    S2.1 -down-> S2.2 : Товара нет
+    S2.1 -down-> S2.3 : Товар есть
+    S2.1 -right-> [*] : Все товары\n проверены
+    S2.2 -up-> S2.1
+    S2.3 -up-> S2.1
+}
+
+state "Оплата" as S3 {
+    state "Формирование чека" as S3.1
+    S3.1 : В чек вносятся
+    S3.1 : товары из накладной
+
+    state "Получение денег" as S3.2
+    S3.2 : Передаётся сумма по чеку
+
+    [*] --> S3.1
+    S3.1 --> S3.2
+    S3.2 --> [*]
+}
+
+state "Получение товаров" as S4 {
+    state "Получение товара" as S4.1
+    S4.1 : Получение товара
+    S4.1 : со склада
+
+    [*] --> S4.1
+    S4.1 --> S4.1 : Есть ещё\n товары
+    S4.1 --> [*] : Все товары\n получены
+}
+
+[*] --> S1
+S1 -left-> S2 : Требуемые\n товары\n найдены
+S2 -down-> S3 : Цена\n устраивает
+S2 -down-> [*] : Цена\n не устраивает
+S3 -right-> S4 : Товары\n оплачены
+S4 -right-> [*]
+
+
+@enduml
