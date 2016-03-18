@@ -1,4 +1,4 @@
-function B = meanearch(A, n);
+function B = meaneach(A, n);
     sum = 0;
     B = zeros(1,n);
     for i = 1:n
