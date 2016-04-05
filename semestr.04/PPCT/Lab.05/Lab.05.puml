@@ -1,0 +1,65 @@
+@startuml
+
+title Пользователь покупает товар
+
+actor Client
+participant Item
+participant Invoice
+participant CashBox
+participant Bill
+participant Stock
+
+activate Client
+create Item
+loop Пока не все товары добавлены
+    Client -> Item : Выбрать товар
+    deactivate Client
+    create Invoice
+    Item -> Invoice : addItem()
+    activate Invoice
+end
+Client <- Invoice
+activate Client
+deactivate Invoice
+alt Цена устраивает
+    create CashBox
+    Client -> CashBox : createBill()
+    deactivate Client
+    activate CashBox
+    create Bill
+    CashBox -> Bill : Bill()
+    deactivate CashBox
+    activate Bill
+    Client <- Bill
+    deactivate Bill
+    activate Client
+    Client -> CashBox : pay()
+    deactivate Client
+    activate CashBox
+    CashBox -> Bill : pay()
+    deactivate CashBox
+    activate Bill
+    Client <- Bill
+    deactivate Bill
+    activate Client
+    Client -> Bill : takeItems()
+    deactivate Client
+    activate Bill
+    create Stock
+    loop Пока не выданы все товары
+        Bill -> Stock : takeItem()
+        deactivate Bill
+        activate Stock
+        Item <- Stock
+        activate Item
+        Client <- Item
+        deactivate Item
+        deactivate Stock
+        activate Client
+    end
+end
+
+deactivate Client
+
+
+@enduml
