@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +24,10 @@ namespace Lab._03
             list = new BindingList<Museum>();
 
             grid.DataSource = list;
+            grid.Columns["Name"].DisplayIndex = 0;
+            grid.Columns["Address"].DisplayIndex = 1;
+            grid.Columns["Owner"].DisplayIndex = 2;
+            grid.Columns["Visits"].DisplayIndex = 3;
             grid.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
@@ -36,39 +42,21 @@ namespace Lab._03
 
         private void openFile_FileOk(object sender, CancelEventArgs e)
         {
-            string filename = openFile.SafeFileName;
-            readFromFile(filename);
+            readFromFile(openFile.FileName);
         }
 
         private void readFromFile(string filename)
         {
-            if (!File.Exists(filename))
-            {
-                return;
-            }
-            StreamReader sr = File.OpenText(filename);
-            if (sr == null)
-            {
-                return;
-            }
-            for (int i = 0; i < 3; i++, sr.ReadLine());
             list.Clear();
-            while (!sr.EndOfStream)
+            Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+            IFormatter formatter = new BinaryFormatter();
+            Console.WriteLine(stream.Length);
+            while(stream.Position != stream.Length)
             {
-                string line = sr.ReadLine();
-                string[] data = line.Split('│');
-                if (data.Length == 6)
-                {
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        data[i] = data[i].Trim();
-                    }
-                    Museum m = new Museum(data[1], data[2], data[3], data[4]);
-                    list.Add(m);
-                }
-                sr.ReadLine();
+                Museum m = (Museum)formatter.Deserialize(stream);
+                list.Add(m);
             }
-            sr.Close();
+            stream.Close();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -112,23 +100,13 @@ namespace Lab._03
 
         private void saveToFile(string filename)
         {
-            StreamWriter sw = File.CreateText(filename);
-            if (sw == null)
+            Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
+            IFormatter formatter = new BinaryFormatter();
+            foreach(Museum m in list)
             {
-                return;
+                formatter.Serialize(stream, m);
             }
-            sw.WriteLine("");
-            sw.WriteLine("");
-            foreach (Museum m in list)
-            {
-                sw.WriteLine();
-                sw.WriteLine(String.Format("│{0}│{1}│{2}|{3}│",
-                    m.Name,
-                    m.Address,
-                    m.Owner,
-                    m.getVisits()));
-            }
-            sw.Close();
+            stream.Close();
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,8 +136,33 @@ namespace Lab._03
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataForm df = new DataForm();
+            DataForm df = new DataForm(this, -1, null);
             df.ShowDialog();
+        }
+
+        public void addOrEdit(int id, Museum m)
+        {
+            if(id >= 0)
+            {
+                list[id] = m;
+            }
+            else
+            {
+                list.Add(m);
+            }
+        }
+
+        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(grid.CurrentRow != null)
+            {
+                DataForm df = new DataForm(this, grid.CurrentRow.Index, list[grid.CurrentRow.Index]);
+                df.ShowDialog();
+            }
+            else
+            {
+                // ERROR
+            }
         }
     }
 }

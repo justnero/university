@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lab._03
 {
-    abstract class AMuseum
+    [Serializable]
+    public abstract class AMuseum
     {
 
         private string name;

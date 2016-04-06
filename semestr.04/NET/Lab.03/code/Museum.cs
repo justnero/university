@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Lab._03
 {
-    class Museum : AMuseum, IVisitable, INotifyPropertyChanged
+    [Serializable]
+    public class Museum : AMuseum, IVisitable, INotifyPropertyChanged
     {
 
         private string owner;
