@@ -54,3 +54,6 @@ gen/
 *.rar
 *.zip
 _*
+
+# macOS
+.DS_Store
