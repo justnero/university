@@ -1,0 +1,18 @@
+@startuml
+start
+while (1. for(int i=0;i<len;i++))
+	:2;
+endwhile
+while(3. while(i > 0 && arr[i] == arr[i-1])
+	while(4. while(arr[i] == j))
+		:5;
+	endwhile
+endwhile
+if (6. if((i == 0 && (len == 1 || arr[i] != arr[i+1])) || i > 0)) then (true)
+	:7;
+else (false)
+	:8;
+endif (9)
+:9;
+end
+@enduml

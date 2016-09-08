@@ -1,0 +1,24 @@
+@startuml
+start
+while(1. while(is >> c))
+	if(2. if(startSearch)) then (true)
+		if(3. if(c != ' ' && c != '\t' && c != '\\n'))
+			:4;
+		endif
+	else (false)
+		if(5. if(c == '.' || c == '!' || c == '?'))
+			:6;
+		endif
+	endif
+endwhile
+	if(7. if(!startSearch)) then (true)
+		:8;
+	endif
+
+	while(9. while(parts.size()))
+		while(10. for(int i=el.first;i <= el.second; i++))
+			:11;
+		endwhile
+	endwhile
+end
+@enduml

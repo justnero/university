@@ -1,0 +1,9 @@
+@startuml
+start
+while(1. while(is >> c))
+	if(2. if(c == 'a')) then (true)
+		:3;
+	endif
+endwhile
+end
+@enduml
