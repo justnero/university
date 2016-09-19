@@ -17,7 +17,7 @@ void dot(bool **m, int n) {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
             if(m[i][j] && i != j) {
-                dotos << "\t\"" << i << "\"" << " -> " << "\"" << j << "\"" << endl;
+                dotos << "\t\"x" << i << "\"" << " -> " << "\"x" << j << "\"" << endl;
                 isEmpty = false;
             }
         }
