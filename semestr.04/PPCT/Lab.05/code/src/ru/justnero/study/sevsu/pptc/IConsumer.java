@@ -4,6 +4,8 @@ import java.util.Map;
 
 public interface IConsumer {
 
+    double money();
+
     void money(double amount, boolean give);
 
     Map<Integer, Item> items();
