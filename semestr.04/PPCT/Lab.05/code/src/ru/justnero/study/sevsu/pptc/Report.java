@@ -1,45 +1,33 @@
 package ru.justnero.study.sevsu.pptc;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Report {
 
     public final String name;
-    public final List<String> lines;
+    public final List<Object> elements;
 
     public Report(String name) {
         this.name = name;
-        this.lines = new ArrayList<>();
+        this.elements = new LinkedList<>();
     }
 
-    public Report addLine(final Object... elements) {
-        StringBuilder sb = new StringBuilder();
-        for(Object el : elements) {
-            sb.append(el);
+    public Report addLine(final Object... parts) {
+        for (Object part : parts) {
+            elements.add(part);
         }
-        lines.add(sb.toString());
+        elements.add("\n");
         return this;
-    }
-
-    public Report removeItem(final int index) {
-        lines.remove(index);
-        return this;
-    }
-
-    public String getLine(final int index) {
-        return lines.get(index);
     }
 
     public int getSize() {
-        return lines.size();
+        return elements.size();
     }
 
     public void print() {
-        System.out.println("\t\t"+name);
-        for(final String line : lines) {
-            System.out.println(line);
-        }
+        System.out.println("\t\t" + name);
+        elements.forEach(System.out::print);
     }
 
 }

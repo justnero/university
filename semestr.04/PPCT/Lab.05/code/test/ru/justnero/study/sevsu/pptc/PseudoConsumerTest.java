@@ -23,7 +23,7 @@ public class PseudoConsumerTest {
     @Test
     public void constructTest() {
         assertThat(consumer.money(), is(15.3D));
-        assertThat(consumer.items().size(), is(0));
+        assertThat(consumer.items().size(), is(1));
     }
 
     @Test

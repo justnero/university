@@ -34,9 +34,9 @@ public class ConsumerTest {
     @Test
     public void fullCycle() throws Exception {
         invoice = new Invoice();
-        invoice .addItem(new Item(1,    "Монитор", 149.99D, 1))
-                .addItem(new Item(2, "Клавиатура",  49.99D, 1))
-                .addItem(new Item(2, "Клавиатура",  49.99D, 1));
+        invoice.addItem(new Item(1, "Монитор", 149.99D, 1))
+                .addItem(new Item(2, "Клавиатура", 49.99D, 1))
+                .addItem(new Item(2, "Клавиатура", 49.99D, 1));
 
         assertThat(invoice.getSum(), is(149.99D + 2.0D * (49.99D)));
         assertThat(invoice.items.size(), is(2));
