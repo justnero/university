@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Stage testingStage;
-    private Controller mainController;
     private StatsController statsController;
 
     public static void main(String[] args) {
@@ -19,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.load(getClass().getResource("main.fxml").openStream());
-        mainController = fxmlLoader.getController();
+        Controller mainController = fxmlLoader.getController();
         mainController.setMain(this);
 
         primaryStage.setTitle("МиСХИ ЛР №2 Куркчи А. Э.");
@@ -37,7 +36,7 @@ public class Main extends Application {
         testingStage.setScene(new Scene(fxmlLoader.getRoot(), 800, 600));
     }
 
-    public void toggleTesting(String fileName) {
+    void toggleTesting(String fileName) {
         if(testingStage.isShowing()) {
             testingStage.close();
         } else {
@@ -46,15 +45,4 @@ public class Main extends Application {
         }
     }
 
-    public Stage getTestingStage() {
-        return testingStage;
-    }
-
-    public Controller getMainController() {
-        return mainController;
-    }
-
-    public StatsController getStatsController() {
-        return statsController;
-    }
 }

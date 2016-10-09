@@ -34,7 +34,7 @@ public class StatsController extends BasicController {
         initTable(rightTable, rightList);
     }
 
-    public void load(String fileName) {
+    void load(String fileName) {
         list = read(fileName, 10000);
         fillData();
     }
@@ -113,6 +113,7 @@ public class StatsController extends BasicController {
         list.add(new TestLog(size, "Добавление", times[0], times[1], times[2], times[3], times[4], average));
         addSeries.getData().add(new XYChart.Data<>(category, average));
 
+        average = 0;
         for (int i = 0; i < 5; i++) {
             data = this.list.get(ids[i]);
             time = System.nanoTime();
@@ -125,6 +126,7 @@ public class StatsController extends BasicController {
         list.add(new TestLog(size, "Поиск", times[0], times[1], times[2], times[3], times[4], average));
         findSeries.getData().add(new XYChart.Data<>(category, average));
 
+        average = 0;
         for (int i = 0; i < 5; i++) {
             data = this.list.get(ids[i]);
             time = System.nanoTime();
