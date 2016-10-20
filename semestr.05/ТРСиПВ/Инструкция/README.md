@@ -47,7 +47,6 @@ Parameters: `-l -c "cd /cygdrive/c/Users/user/CLionProjects/$FileDirName$; mpic+
 
 Working directory: `$ProjectFileDir$`
 
-
 **Конфигурация запускатора:**
 
 Name: `MPI Run`
