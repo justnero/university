@@ -4,7 +4,7 @@ import javafx.scene.control.TreeItem;
 
 public class BTree implements ITree {
 
-    private final BTreeImpl<TData> impl = new BTreeImpl<>();
+    private final BTreeImpl<TData> impl = new BTreeImpl<>(4);
 
     @Override
     public int add(TData data) {

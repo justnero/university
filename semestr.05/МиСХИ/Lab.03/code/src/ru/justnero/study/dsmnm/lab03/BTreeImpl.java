@@ -6,7 +6,7 @@ import javafx.scene.control.TreeItem;
 
 public class BTreeImpl<T extends Comparable<T>> {
 
-    private int minKeySize = 4;
+    private int minKeySize = 2;
     private int minChildrenSize = minKeySize + 1;
     private int maxKeySize = 2 * minKeySize;
     private int maxChildrenSize = maxKeySize + 1;
