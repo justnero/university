@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="831.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.justnero.study.dsmnm.lab02.StatsController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" percentWidth="1.0" prefWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="48.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="NEVER" maxWidth="15.0" minWidth="15.0" percentWidth="2.0" prefWidth="15.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="48.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" percentWidth="1.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+      <RowConstraints minHeight="10.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+      <RowConstraints minHeight="10.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
+  </rowConstraints>
+   <children>
+      <TableView fx:id="leftTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TableView fx:id="rightTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Label text="AVL" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Label text="Bin" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <LineChart fx:id="chart" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5">
+        <xAxis>
+          <CategoryAxis label="Количество элементов" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Время" side="LEFT" />
+        </yAxis>
+      </LineChart>
+   </children>
+</GridPane>
