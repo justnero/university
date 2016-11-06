@@ -46,10 +46,10 @@ void recount(double **k, int n, int m) {
                     cnt_l++;
                 }
             }
-            if (cnt_l == 0 && cnt_g != 0 && cnt_e != 0) {
+            if (cnt_l == 0 && cnt_g != 0) {
                 k[l][0] = 0;
             }
-            if (cnt_g == 0 && cnt_l != 0 && cnt_e != 0) {
+            if (cnt_g == 0 && cnt_l != 0) {
                 k[i][0] = 0;
             }
         }
