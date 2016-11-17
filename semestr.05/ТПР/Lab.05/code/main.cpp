@@ -160,7 +160,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         if (matrix[i][m]) {
             cout << "r[" << setw(cout_width + 1) << concat('x', i + 1) << "] = "
-                 << setw(16) << setprecision(14) << rx[i] << endl;
+                 << setw(20) << setprecision(18) << rx[i] << endl;
         }
     }
     cout << endl;
