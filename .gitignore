@@ -46,6 +46,10 @@ hs_err_pid*
 out/
 gen/
 
+# CLion
+cmake-build-*
+.cmake-build-*
+
 # Gradle:
 .idea/gradle.xml
 .idea/libraries
