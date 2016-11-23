@@ -14,6 +14,7 @@ int **read(int &n, int &m) {
         for (int j = 0; j < m; j++) {
             is >> matrix[i][j];
         }
+        matrix[i][m] = 1;
     }
     return matrix;
 }

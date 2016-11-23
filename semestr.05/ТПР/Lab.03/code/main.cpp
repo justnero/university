@@ -70,7 +70,6 @@ void update(double **k, int n, int m, ifstream &is) {
         for (int j = 0; j < n; j++) {
             k[j][a] = o * k[j][b] + (1.0 - o) * k[j][a];
         }
-
     }
 }
 
