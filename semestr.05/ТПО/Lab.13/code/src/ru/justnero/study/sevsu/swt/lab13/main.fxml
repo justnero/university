@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.justnero.study.sevsu.swt.lab13.Controller">
+   <children>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Введите вес письма">
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Roboto Regular" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="weightField" onKeyReleased="#handleWeightChange">
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Roboto Regular" size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="weightLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Roboto Regular" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Для расчета цены введите вес">
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Roboto Regular" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

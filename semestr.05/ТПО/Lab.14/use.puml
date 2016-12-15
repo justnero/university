@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+
+actor :Староста: as user
+
+rectangle :justnero.ru: {
+	user -- (Регистрация)
+	user -- (Авторизация)
+	user -- (Список пар)
+	user -- (Добавление пар)
+	user -- (Учёт посещаемости)
+	user -- (Список подгрупп)
+	user -- (Статистика пропусков)
+}
+
+@enduml
