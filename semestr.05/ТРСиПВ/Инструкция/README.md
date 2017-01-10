@@ -34,7 +34,7 @@
 	* Name: `MPI C++`
 	* Group: `MPI`
 	* Program: `C:\cygwin64\bin\sh.exe`
-	* Parameters: `-l -c "cd /cygdrive/c/Users/user/CLionProjects/$FileDirName$; mpic++ $FileName$ -	o $FileNameWithoutExtension$.exe"`
+	* Parameters: `-l -c "cd /cygdrive/c/Users/user/CLionProjects/$FileDirName$; mpic++ $FileName$ -o $FileNameWithoutExtension$.exe"`
 	* Working directory: `$ProjectFileDir$`
 
 
