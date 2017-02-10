@@ -1,0 +1,2 @@
+Тест Программы на Двух языках
+Program test with two languages
