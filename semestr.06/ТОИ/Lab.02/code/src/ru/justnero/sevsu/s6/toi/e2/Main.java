@@ -56,8 +56,11 @@ public class Main {
 
     public static void main(String args[]) {
         Scanner scn = new Scanner(System.in);
+        System.out.println("\tЗадание 1");
         task1(scn);
+        System.out.println("\n\tЗадание 2");
         task2(scn);
+        System.out.println("\n\tЗадание 3");
         task3();
     }
 
@@ -65,12 +68,21 @@ public class Main {
         int[] list = new int[1000];
         Random rnd = new Random();
         for (int i = 0; i < 1000; i++) {
-            list[i] = (int) (1000 * rnd.nextDouble());
+            list[i] = (int) (10000 * rnd.nextDouble());
         }
         Arrays.sort(list);
+        System.out.println("Рандомный массив");
+        System.out.println(Arrays.toString(list));
+        System.out.println("Какое значение найти?");
 
         int n = scn.nextInt();
-        System.out.println(Algorithm.interpolationSearch(list, n));
+        int res = Algorithm.interpolationSearch(list, n);
+        if(res == -1) {
+            System.out.println("Не найдено");
+        } else {
+            System.out.print("Найдено в позиции ");
+            System.out.println(res);
+        }
     }
 
     public static void task2(Scanner scn) {
@@ -80,8 +92,17 @@ public class Main {
                     .reduce("", (s1, s2) -> s1 + "\n" + s2)
                     .trim();
 
+            System.out.println("Текст считан");
+            System.out.println("Какое слово необходимо найти?");
             String needle = scn.next();
-            System.out.println(Algorithm.rabinSearch(input, needle));
+            List<Integer> res = Algorithm.rabinSearch(input, needle);
+            System.out.println();
+            if(res.isEmpty()) {
+                System.out.println("Не найдено");
+            } else {
+                System.out.print("Найдено в позициях ");
+                System.out.println(res);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,6 +134,7 @@ public class Main {
             });
             bw.flush();
             bw.close();
+            System.out.println("Глоссарий записан в файл");
         } catch (IOException e) {
             e.printStackTrace();
         }
