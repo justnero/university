@@ -209,6 +209,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lab.01.iml" filepath="$PROJECT_DIR$/Lab.01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab.02.iml" filepath="$PROJECT_DIR$/Lab.02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Lab.03/code/Lab.03.iml" filepath="$PROJECT_DIR$/../../Lab.03/code/Lab.03.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
