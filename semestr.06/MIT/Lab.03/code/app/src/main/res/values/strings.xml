@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab.03</string>
+    <string name="acel_z">Acel Z</string>
+    <string name="acel_x">Acel X</string>
+    <string name="acel_y">Acel Y</string>
+    <string name="acceleration_x">Acceleration X: %.2f</string>
+    <string name="acceleration_y">Acceleration Y: %.2f</string>
+    <string name="acceleration_z">Acceleration Z: %.2f</string>
+</resources>
