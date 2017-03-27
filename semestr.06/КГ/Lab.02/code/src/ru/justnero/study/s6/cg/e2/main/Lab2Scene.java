@@ -74,11 +74,11 @@ public class Lab2Scene extends Scene {
 
         gl.glColor3f(0f, 0f, 1f);
         gl.glLineWidth(0.2f);
-        base.display(drawable, coordinateSize);
+        base.display(drawable, coordinateSize, false);
 
         gl.glColor3fv(color, 0);
         gl.glLineWidth(2f);
-        result.display(drawable, coordinateSize);
+        result.display(drawable, coordinateSize, false);
         gl.glLineWidth(1f);
 
         axis.setCoordinateSize(coordinateSize);

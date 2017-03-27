@@ -211,6 +211,9 @@
       <module fileurl="file://$PROJECT_DIR$/Lab.01.iml" filepath="$PROJECT_DIR$/Lab.01.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab.02.iml" filepath="$PROJECT_DIR$/Lab.02.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../Lab.03/code/Lab.03.iml" filepath="$PROJECT_DIR$/../../Lab.03/code/Lab.03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Lab.04/code/Lab.04.iml" filepath="$PROJECT_DIR$/../../Lab.04/code/Lab.04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Lab.05/code/Lab.05.iml" filepath="$PROJECT_DIR$/../../Lab.05/code/Lab.05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Lab.06/code/Lab.06.iml" filepath="$PROJECT_DIR$/../../Lab.06/code/Lab.06.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">

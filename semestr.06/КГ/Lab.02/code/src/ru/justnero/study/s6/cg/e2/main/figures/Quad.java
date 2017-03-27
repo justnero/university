@@ -64,10 +64,10 @@ public class Quad extends BaseFigure<Quad> {
         }
     }
 
-    public void display(GLAutoDrawable drawable, float coordinateSize) {
+    public void display(GLAutoDrawable drawable, float coordinateSize, boolean fill) {
         final GL2 gl = drawable.getGL().getGL2();
 
-        displayQuad(gl);
+        displayQuad(gl, fill);
         displayVertices(gl);
 
         if (labelDisplay) {
@@ -75,7 +75,7 @@ public class Quad extends BaseFigure<Quad> {
         }
     }
 
-    protected void displayQuad(GL2 gl) {
+    protected void displayQuad(GL2 gl, boolean fill) {
         gl.glBegin(fill ? GL2.GL_QUADS : GL2.GL_LINE_LOOP);
         Arrays.stream(vertices).forEach(vector3f -> gl.glVertex2f(vector3f.x, vector3f.y));
         gl.glEnd();
