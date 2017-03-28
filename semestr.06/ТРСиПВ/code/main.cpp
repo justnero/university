@@ -1,13 +1,25 @@
 #include <iostream>
+#include <mpi.h>
+#include <cmath>
 
 #define ARRAY_SIZE 10000
 #define ITERATIONS_COUNT 100
 #define DEBUG false
 
+#define OP_CLOSE 0
+#define OP_SCATTER 1
+
 using namespace std;
 using namespace chrono;
 
 typedef int val_t;
+
+int rank;
+int size;
+int* buf;
+MPI_Comm hyperCube;
+
+const int *list(int i, int dims);
 
 long long
 timer(void (*before)(void **), void (*timed_function)(void **), void (*after)(void **), void **arg, int iterations,
@@ -67,31 +79,84 @@ void bubbleSequential(void **arg) {
     }
 }
 
-void preSequential(void **arg) {
+void preGenerateArray(void **arg) {
     val_t *array = *((val_t **) arg);
     for (int i = 0; i < ARRAY_SIZE; i++) {
         array[i] = rand();
     }
 }
 
-void postSequential(void **arg) {}
+void post(void **arg) {}
 
-long long testSequential(long long *full_time) {
+long long testSequentialShell(long long *full_time) {
     val_t *array = (val_t *) malloc(sizeof(val_t) * ARRAY_SIZE);
-    return timer(preSequential, shellSequential, postSequential, (void **) &array, ITERATIONS_COUNT, full_time);
+    return timer(preGenerateArray, shellSequential, post, (void **) &array, ITERATIONS_COUNT, full_time);
 }
 
-long long testBubble(long long *full_time) {
+long long testSequentialBubble(long long *full_time) {
     val_t *array = (val_t *) malloc(sizeof(val_t) * ARRAY_SIZE);
-    return timer(preSequential, bubbleSequential, postSequential, (void **) &array, ITERATIONS_COUNT, full_time);
+    return timer(preGenerateArray, bubbleSequential, post, (void **) &array, ITERATIONS_COUNT, full_time);
 }
 
-int main() {
+long long testParallelShell(long long *full_time) {
+    val_t *array = (val_t *) malloc(sizeof(val_t) * ARRAY_SIZE);
+    return timer(preGenerateArray, shellSequential, post, (void **) &array, ITERATIONS_COUNT, full_time);
+}
+
+int runMaster() {
+    int op;
+    long long ns;
     srand((unsigned int) time(0));
-    long long ns = testSequential(NULL);
+
+    ns = testSequentialShell(NULL);
     cout << ns << "ns = " << ns / 1000 << "mcs = " << ns / 1000 / 1000 << "ms" << endl;
-    ns = testBubble(NULL);
+    ns = testParallelShell(NULL);
+    cout << ns << "ns = " << ns / 1000 << "mcs = " << ns / 1000 / 1000 << "ms" << endl;
+    ns = testSequentialBubble(NULL);
     cout << ns << "ns = " << ns / 1000 << "mcs = " << ns / 1000 / 1000 << "ms" << endl;
 
+    op = OP_CLOSE;
+    MPI_Barrier(hyperCube);
+    MPI_Bcast(&op, 1, MPI_INTEGER, 0, hyperCube);
     return 0;
+}
+
+int runSlave() {
+    int op, tmp;
+    MPI_Barrier(hyperCube);
+    MPI_Bcast(&op, 1, MPI_INTEGER, 0, hyperCube);
+    switch (op) {
+        case OP_SCATTER:
+            MPI_Bcast(&tmp, 1, MPI_INTEGER, 0, hyperCube);
+            MPI_Scatterv()
+            MPI_Scatter(nullptr, 0, MPI_INTEGER, buf, tmp, )
+        case OP_CLOSE:
+            return 0;
+        default:
+            return op;
+    }
+}
+
+int main(int argc, char **argv) {
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    int code = 0;
+    int hyperCubeDims = (int) floor(log2(size));
+    int hyperCubeSize = (int) pow(2, hyperCubeDims);
+    if (rank < hyperCubeSize) {
+        MPI_Cart_create(MPI_COMM_WORLD, hyperCubeDims, list(2, hyperCubeDims), list(0, hyperCubeDims), 0,
+                        &hyperCube);
+        code = rank ? runSlave() : runMaster();
+    }
+
+    MPI_Finalize();
+    return code;
+}
+
+const int *list(int i, int dims) {
+    int *res = (int *) malloc(sizeof(int) * dims);
+    for (int k = 0; k < dims; res[k++] = i);
+    return res;
 }
