@@ -2,7 +2,7 @@
 # include <fstream>
 
 using namespace std;
-ofstream fout;
+ofstream fos;
 string my;
 int i = 0;
 int trans[18][15] = {
@@ -34,17 +34,17 @@ string pass(string text, int *code) {
         text.clear();
         if (c != ' ')
             i--;
-        fout << *code << " ";
+        fos << *code << " ";
     } else if (*code < 800) {
         if (text != " ") {
             cout << text << " - Допущено с кодом = " << *code << endl;
-            fout << *code << " ";
+            fos << *code << " ";
         }
         text.clear();
     } else {
         if (text != " ") {
             cout << text << " - Не допущено с кодом = " << *code << endl;
-            fout << *code << " ";
+            fos << *code << " ";
         }
         text.clear();
     }
@@ -54,11 +54,11 @@ string pass(string text, int *code) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    ifstream fin("input.txt");
-    fout.open("codes.txt");
+    ifstream fis("input.txt");
+    fos.open("codes.txt");
     char c;
     string word = "";
-    getline(fin, my);
+    getline(fis, my);
     if (my[my.length() - 1] != ' ')
         my.push_back(' ');
     int cond = 0, row;
@@ -135,8 +135,8 @@ int main() {
         }
     }
 
-    fout << 999;
-    fout.close();
-    fin.close();
+    fos << 999;
+    fos.close();
+    fis.close();
     return 0;
 }
