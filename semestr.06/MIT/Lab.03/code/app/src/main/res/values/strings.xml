@@ -3,7 +3,7 @@
     <string name="acel_z">Acel Z</string>
     <string name="acel_x">Acel X</string>
     <string name="acel_y">Acel Y</string>
-    <string name="acceleration_x">Acceleration X: %.2f</string>
-    <string name="acceleration_y">Acceleration Y: %.2f</string>
-    <string name="acceleration_z">Acceleration Z: %.2f</string>
+    <string name="acceleration_x">Acceleration X: %1$.2f (One way %2$3d times)</string>
+    <string name="acceleration_y">Acceleration Y: %1$.2f (One way %2$3d times)</string>
+    <string name="acceleration_z">Acceleration Z: %1$.2f (One way %2$3d times)</string>
 </resources>

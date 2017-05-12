@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.justnero.sevsu.s3.e7.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="http://ntv.ifmo.ru/file/journal/"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/nbFile"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPDF"
+        android:layout_alignBottom="@+id/tvPDF"
+        android:layout_toEndOf="@+id/tvURL"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/tvPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvURL"
+        android:layout_toEndOf="@+id/nbFile"
+        android:text=".pdf"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvURL"
+        android:layout_marginTop="33dp"
+        android:text="DOWNLOAD" />
+
+    <Button
+        android:id="@+id/btnOpen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnDelete"
+        android:layout_below="@+id/btnDownload"
+        android:layout_marginTop="5dp"
+        android:text="OPEN" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnOpen"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="DELETE" />
+
+</RelativeLayout>
