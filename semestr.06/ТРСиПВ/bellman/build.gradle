@@ -1,0 +1,63 @@
+import javax.swing.*
+
+group 'TRSPV'
+version '1.0-SNAPSHOT'
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version+"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+apply plugin: 'java'
+
+
+mainClassName = 'MainKt'
+run.systemProperties = System.properties
+
+//def mpjHome = '/Users/justnero/mpj-v0_44'
+def mpjHome = System.getenv('MPJ_HOME')
+def mpjStarter = files("$mpjHome/lib/starter.jar")
+def mpjJar = files("$mpjHome/lib/mpj.jar")
+def mpjClasspath = sourceSets.main.runtimeClasspath - mpjJar
+
+defaultTasks 'run'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile mpjJar
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    compile 'com.beust:klaxon:0.30+'
+    compile group: "golem", name: "golem-backend-mtj", version: "0.9+"
+    compile group: "golem", name: "golem-core", version: "0.9+"
+}
+
+run.doFirst {
+    println mpjHome
+//    def procNum = 2
+    def procNum = JOptionPane.showInputDialog(null, "Введите количество процессов: ", "2")
+
+    main = 'runtime.starter.MPJRun'
+    classpath = mpjStarter
+    args mainClassName, '-cp', mpjClasspath.asPath, '-np', procNum
+//    dependsOn classes
+}
+run.dependsOn classes

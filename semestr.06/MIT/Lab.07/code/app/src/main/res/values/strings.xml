@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MIT7</string>
+    <string name="app_name">Lab.07</string>
     <string name="checkBoxText">Не показывать больше\nэто уведомление</string>
-    <string name="howToUse">А сегодня в данное приложение \nне все могут смотреть. \nВернее смотреть могут не \nтолько лишь все, мало кто \nможет это делать</string>
+    <string name="howToUse">Тут могла быть ваша реклама</string>
 </resources>
