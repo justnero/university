@@ -1,5 +1,6 @@
 package ru.justnero.sevsu.s3.mit.lab04;
 
+import android.app.Activity;
 import android.gesture.Gesture;
 import android.gesture.GestureLibraries;
 import android.gesture.GestureLibrary;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements GestureOverlayView.OnGesturePerformedListener, View.OnClickListener {
+public class MainActivity extends Activity implements GestureOverlayView.OnGesturePerformedListener, View.OnClickListener {
 
     GestureLibrary gLib;
     GestureOverlayView gestures;

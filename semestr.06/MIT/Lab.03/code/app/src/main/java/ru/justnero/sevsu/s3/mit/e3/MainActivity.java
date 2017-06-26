@@ -1,5 +1,6 @@
 package ru.justnero.sevsu.s3.mit.e3;
 
+import android.app.Activity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -8,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends Activity implements SensorEventListener {
 
     TextView acelX;
     TextView acelY;

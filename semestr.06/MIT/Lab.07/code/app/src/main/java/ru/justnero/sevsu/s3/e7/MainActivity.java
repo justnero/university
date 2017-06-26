@@ -1,6 +1,7 @@
 package ru.justnero.sevsu.s3.e7;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -22,9 +23,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
-    private MainActivity activity;
     private SharedPreferences mSettings;
     DownloadManager downloadManager;
     private long downloadReference;

@@ -1,5 +1,6 @@
 package ru.justnero.sevsu.s3.mit.e6;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,7 +27,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener,
+public class MainActivity extends Activity implements View.OnClickListener, MediaPlayer.OnPreparedListener,
         MediaPlayer.OnCompletionListener {
 
     private MainActivity activity;

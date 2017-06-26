@@ -1,5 +1,6 @@
 package ru.justnero.sevsu.s3.mit.e5;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     Button btnUpdate, btnAdd, btnShow;
     NumberPicker nbValue;

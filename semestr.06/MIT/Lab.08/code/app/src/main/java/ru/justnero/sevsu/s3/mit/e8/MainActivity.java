@@ -1,5 +1,6 @@
 package ru.justnero.sevsu.s3.mit.e8;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     Switch switchTimeDate;
     TimePicker timePicker;
