@@ -1,0 +1,15 @@
+(insert "Москва" 1 "12:20")
+(insert "Сочи" 2 "12:30")
+(insert "Симферополь" 3 "13:00")
+(print "Изначально было:")
+(select*)
+(print "Сохраним...")
+(savef "test.txt")
+
+(print "Изменим время для поезда в Симферополь:")
+(update (where :dest "Симферополь") :time "12:40")
+(selectByDest "Симферополь")
+
+(print "Загрузим сохранение")
+(loadf "test.txt")
+(select*)
