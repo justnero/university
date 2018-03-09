@@ -1,0 +1,9 @@
+table {
+	display: inline-block;
+}
+tbody tr:nth-child(odd) {
+   background-color: #ccc;
+}
+table th, table td {
+	text-align: center;
+}
